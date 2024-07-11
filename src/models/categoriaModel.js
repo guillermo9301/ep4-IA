@@ -29,7 +29,7 @@ class Categoria {
     }
 
     static actualizar(id, categoria, result) {
-        const sql = 'UPDATE categorias SET nombre = ?, descripcion = ? WHERE idcategoria = ?';
+        const sql = 'UPDATE categorias SET nombre = ?, descripcion = ? WHERE id_categoria = ?';
         db.query(sql, [categoria.nombre, categoria.descripcion, id], (err, res) => {
             if (err) {
                 result(err, null);
@@ -44,7 +44,7 @@ class Categoria {
     }
 
     static eliminar(id, result) {
-        const sql = 'DELETE FROM categorias WHERE idcategoria = ?';
+        const sql = 'DELETE FROM categorias WHERE id_categoria = ?';
         db.query(sql, [id], (err, res) => {
             if (err) {
                 result(err, null);

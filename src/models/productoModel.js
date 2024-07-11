@@ -6,7 +6,7 @@ class Producto {
         this.descripcion = producto.descripcion;
         this.precio = producto.precio;
         this.stock = producto.stock;
-        this.idcategoria = producto.idcategoria;
+        this.id_categoria = producto.id_categoria;
     }
 
     static registrar(nuevoProducto, result) {
@@ -21,7 +21,7 @@ class Producto {
     }
 
     static obtenerPorId(id, result) {
-        const sql = 'SELECT * FROM productos WHERE idproducto = ?';
+        const sql = 'SELECT * FROM productos WHERE id_producto = ?';
         db.query(sql, [id], (err, res) => {
             if (err) {
                 result(err, null);
@@ -32,8 +32,8 @@ class Producto {
     }
 
     static actualizar(id, producto, result) {
-        const sql = 'UPDATE productos SET precio = ?, stock = ? WHERE idproducto = ?';
-        db.query(sql, [producto.precio, producto.stock,  id], (err, res) => {
+        const sql = 'UPDATE productos SET precio = ?, stock = ? WHERE id_producto = ?';
+        db.query(sql, [producto.precio, producto.stock, id], (err, res) => {
             if (err) {
                 result(err, null);
                 return;
@@ -47,7 +47,7 @@ class Producto {
     }
 
     static eliminar(id, result) {
-        const sql = 'DELETE FROM productos WHERE idproducto = ?';
+        const sql = 'DELETE FROM productos WHERE id_producto = ?';
         db.query(sql, [id], (err, res) => {
             if (err) {
                 result(err, null);

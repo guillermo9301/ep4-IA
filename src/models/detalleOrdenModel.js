@@ -2,8 +2,8 @@ const db = require('../config/db');
 
 class DetalleOrden {
     constructor(detalle) {
-        this.idorden = detalle.idorden;
-        this.idproducto = detalle.idproducto;
+        this.id_orden = detalle.id_orden;
+        this.id_producto = detalle.id_producto;
         this.cantidad = detalle.cantidad;
         this.total = detalle.total;
     }
@@ -20,7 +20,7 @@ class DetalleOrden {
     }
 
     static obtenerPorIdOrden(idorden, result) {
-        const sql = 'SELECT * FROM detalles_orden WHERE idorden = ?';
+        const sql = 'SELECT * FROM detalles_orden WHERE id_orden = ?';
         db.query(sql, [idorden], (err, res) => {
             if (err) {
                 result(err, null);
@@ -31,7 +31,7 @@ class DetalleOrden {
     }
 
     static actualizar(id, detalle, result) {
-        const sql = 'UPDATE detalles_orden SET idproducto = ?, cantidad = ?, total = ? WHERE iddetalle = ?';
+        const sql = 'UPDATE detalles_orden SET id_producto = ?, cantidad = ?, total = ? WHERE id_detalle = ?';
         db.query(sql, [detalle.idproducto, detalle.cantidad, detalle.total, id], (err, res) => {
             if (err) {
                 result(err, null);

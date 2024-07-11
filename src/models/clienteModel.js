@@ -20,7 +20,7 @@ class Cliente {
     }
 
     static obtenerPorId(id, result) {
-        const sql = 'SELECT * FROM clientes WHERE idcliente = ?';
+        const sql = 'SELECT * FROM clientes WHERE id_cliente = ?';
         db.query(sql, [id], (err, res) => {
             if (err) {
                 result(err, null);
@@ -31,7 +31,7 @@ class Cliente {
     }
 
     static actualizar(id, cliente, result) {
-        const sql = 'UPDATE clientes SET telefono = ?, direccion = ? WHERE idcliente = ?';
+        const sql = 'UPDATE clientes SET telefono = ?, direccion = ? WHERE id_cliente = ?';
         db.query(sql, [cliente.telefono, cliente.direccion, id], (err, res) => {
             if (err) {
                 result(err, null);
@@ -42,7 +42,7 @@ class Cliente {
     }
 
     static eliminar(id, result) {
-        const sql = 'DELETE FROM clientes WHERE idcliente = ?';
+        const sql = 'DELETE FROM clientes WHERE id_cliente = ?';
         db.query(sql, [id], (err, res) => {
             if (err) {
                 result(err, null);

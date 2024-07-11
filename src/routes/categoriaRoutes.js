@@ -3,9 +3,9 @@ const router = express.Router();
 const categoriaController = require('../controllers/categoriaController');
 
 
-router.post('/', categoriaController.crearCategoria);
+router.post('/nueva', categoriaController.crearCategoria);
 router.get('/', categoriaController.obtenerCategorias);
-router.put('/:id', categoriaController.actualizarCategoria);
-router.delete('/:id', categoriaController.eliminarCategoria);
+router.put('/editar/:id', categoriaController.actualizarCategoria);
+router.delete('/eliminar/:id', categoriaController.eliminarCategoria);
 
 module.exports = router;

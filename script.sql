@@ -1,39 +1,40 @@
-
+CREATE DATABASE EP4_IA
+USE EP4_IA
 CREATE TABLE categorias (
-    idcategoria INT AUTO_INCREMENT PRIMARY KEY,
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255),
     descripcion VARCHAR(255)
 );
 CREATE TABLE productos (
-    idproducto INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255),
     descripcion VARCHAR(255),
     precio DECIMAL(10, 2),
     stock INT,
-    idcategoria INT,
-    FOREIGN KEY (idcategoria) REFERENCES categorias(idcategoria)
+    id_categoria INT,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
 
 CREATE TABLE ordenes (
-    idorden INT AUTO_INCREMENT PRIMARY KEY,
-    idcliente INT,
+    id_orden INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT,
     estado ENUM('pendiente', 'enviado', 'entregado') NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (idcliente) REFERENCES clientes(idcliente)
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
 
 CREATE TABLE detalles_orden (
-    iddetalle INT AUTO_INCREMENT PRIMARY KEY,
-    idorden INT,
-    idproducto INT,
+    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    id_orden INT,
+    id_producto INT,
     cantidad INT,
 	total DECIMAL(10, 2) ,
-    FOREIGN KEY (idorden) REFERENCES ordenes(idorden),
-    FOREIGN KEY (idproducto) REFERENCES productos(idproducto)
+    FOREIGN KEY (id_orden) REFERENCES ordenes(id_orden),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 
 CREATE TABLE clientes (
-    idcliente INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255),
     correo VARCHAR(255),
     telefono VARCHAR(9),

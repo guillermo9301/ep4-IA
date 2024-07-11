@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const ordenController = require('../controllers/ordenController');
 
-router.post('/', ordenController.crearOrden);
+router.post('/nueva', ordenController.crearOrden);
 router.get('/:id', ordenController.obtenerOrden);
-router.put('/:id', ordenController.actualizarOrden);
-router.delete('/:id', ordenController.eliminarOrden);
+router.put('/editar/:id', ordenController.actualizarOrden);
+router.delete('/eliminar/:id', ordenController.eliminarOrden);
 
 module.exports = router;
