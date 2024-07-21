@@ -46,7 +46,7 @@ class DetalleOrden {
     }
 
     static eliminar(id, result) {
-        const sql = 'DELETE FROM detalles_orden WHERE iddetalle = ?';
+        const sql = 'DELETE FROM detalles_orden WHERE id_detalle = ?';
         db.query(sql, [id], (err, res) => {
             if (err) {
                 result(err, null);
