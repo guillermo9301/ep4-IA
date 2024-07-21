@@ -17,8 +17,19 @@ exports.obtenerCategorias = (req, res) => {
 
 exports.actualizarCategoria = (req, res) => {
     Categoria.actualizar(req.params.id, req.body, (err, data) => {
-        if (err) res.status(500).send(err);
-        else res.send(data);
+        if (err) {
+            if (err.kind === 'not_found') {
+                res.status(404).send({
+                    message: `Categoría no encontrada con id ${req.params.id}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: `Error actualizando categoría con id ${req.params.id}.`
+                });
+            }
+        } else {
+            res.status(200).send(data);
+        }
     });
 };
 

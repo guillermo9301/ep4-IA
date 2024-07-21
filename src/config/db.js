@@ -18,3 +18,12 @@ db.connect((err) => {
 });
 
 module.exports = db;
+
+module.exports.close = () => {
+    return new Promise((resolve, reject) => {
+        db.end(err => {
+            if (err) return reject(err);
+            resolve();
+        });
+    });
+};
